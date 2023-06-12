@@ -35,9 +35,8 @@ public class Product {
     private String madeIn;
     @Enumerated(EnumType.STRING)
     private Category category;
-    private int amount;
 
-    @ManyToMany(mappedBy = "products",cascade = {DETACH,REFRESH,MERGE,REMOVE})
+    @ManyToMany(mappedBy = "products",cascade = {DETACH,REFRESH,MERGE})
     private List<Basket>baskets;
     @ManyToOne(cascade = {DETACH,MERGE,REMOVE,REFRESH})
     private Brand brand;

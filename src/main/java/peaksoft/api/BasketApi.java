@@ -1,18 +1,13 @@
 package peaksoft.api;
 
-import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.dto.SimpleResponse;
-import peaksoft.dto.TokenResponse;
 import peaksoft.dto.request.BasketRequest;
-import peaksoft.dto.request.UserRequest;
-import peaksoft.dto.response.AllUserResponse;
 import peaksoft.dto.response.BasketResponse;
-import peaksoft.dto.response.UserResponse;
+
 import peaksoft.service.BasketService;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/basket")
@@ -28,14 +23,14 @@ public class BasketApi {
     @PreAuthorize("permitAll()")
     @PostMapping("/{userId}")
     public SimpleResponse save (@PathVariable Long userId,
-                                @RequestBody @Valid BasketRequest request){
+                                @RequestBody  BasketRequest request){
         return basketService.saveBasket(userId,request);
     }
 
-    @GetMapping("/{userId}")
+    @GetMapping("/{id}")
     @PreAuthorize("permitAll()")
-    public List<BasketResponse> getAll(@PathVariable Long userId){
-        return basketService.getAllBasket(userId);
+    public BasketResponse getById(@PathVariable Long id){
+        return basketService.getByIdBasket(id);
     }
 
 

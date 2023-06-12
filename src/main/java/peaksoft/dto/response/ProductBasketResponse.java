@@ -11,5 +11,6 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class ProductBasketResponse {
     private Long id;
-    private String name;
+    private String productName;
+    private BigDecimal price;
 }

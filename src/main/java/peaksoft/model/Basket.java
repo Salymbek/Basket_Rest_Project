@@ -21,7 +21,6 @@ public class Basket {
     @GeneratedValue(generator = "basket_gen",strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "basket_gen",sequenceName = "basket_seq",allocationSize = 1)
     private Long id;
-    private BigDecimal sum;
     @ManyToMany(cascade = {MERGE,DETACH,REFRESH})
     private List<Product>products;
 

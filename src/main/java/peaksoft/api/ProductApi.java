@@ -1,9 +1,6 @@
 package peaksoft.api;
 
-import jakarta.annotation.security.PermitAll;
-import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.dto.SimpleResponse;
 import peaksoft.dto.request.ProductRequest;
@@ -27,7 +24,7 @@ public class ProductApi {
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping("/{brandId}")
     public SimpleResponse saveProduct(@PathVariable Long brandId,
-                                      @RequestBody @Valid ProductRequest request){
+                                      @RequestBody  ProductRequest request){
         return productService.saveProduct(brandId, request);
     }
 
@@ -46,7 +43,7 @@ public class ProductApi {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public SimpleResponse update (@PathVariable Long id, @RequestBody @Valid ProductRequest request){
+    public SimpleResponse update (@PathVariable Long id, @RequestBody ProductRequest request){
         return productService.updateProductById(id,request);
     }
     @DeleteMapping("/{id}")
